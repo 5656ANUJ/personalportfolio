@@ -2,6 +2,7 @@
 import React, { useRef, useState } from "react";
 import { useForm } from "react-hook-form";
 import emailjs from "@emailjs/browser";
+import SectionWrapper from "../components/SectionWrapper";
 
 type FormData = {
   user_name: string;
@@ -53,7 +54,7 @@ const ContactSec = () => {
   };
 
   return (
-    <section
+    <SectionWrapper
       id="contact"
       className="relative w-full py-20 flex flex-col items-center justify-center text-center z-20"
     >
@@ -167,7 +168,7 @@ const ContactSec = () => {
           </a>
         </div>
       </div>
-    </section>
+    </SectionWrapper>
   );
 };
 

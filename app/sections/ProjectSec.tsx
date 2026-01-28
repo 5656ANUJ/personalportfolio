@@ -1,7 +1,7 @@
 "use client";
-import { useRef } from "react";
+import { useRef, useState, useEffect } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
-import { div } from "framer-motion/client";
+import SectionWrapper from "../components/SectionWrapper";
 
 const projects = [
   {
@@ -39,127 +39,133 @@ export default function ProjectSec() {
   });
 
   return (
-    <section
-      ref={containerRef}
-      className="relative w-full mt-20 h-screen"
-      style={{ height: `${projects.length * 100}vh` }}
-    >
-      <div className="relative z-20 mb-10 flex justify-center">
+    <div id="projects" className="relative w-full py-10">
+      <div className="relative flex justify-center">
         <div
           className="
-  inline-flex h-8.5 items-center justify-end rounded-3xl 
-  pt-1 pr-8 pb-1 pl-8
-  bg-[#1A1A1A] [background-blend-mode:plus-lighter]
-  backdrop-blur-[6px]
-  shadow-[inset_3px_3px_0.5px_-3.5px_rgba(255,255,255,0.5),inset_2px_2px_1px_-2px_#B3B3B3,inset_-2px_-2px_1px_-2px_#B3B3B3,inset_0_0_0_1px_#999,inset_0_0_22px_0_rgba(242,242,242,0.5)]
-  translate-y-20
-"
+    inline-flex h-8.5 items-center justify-end rounded-3xl 
+    pt-1 pr-8 pb-1 pl-8
+    bg-[#1A1A1A] [background-blend-mode:plus-lighter]
+    backdrop-blur-[6px]
+    shadow-[inset_3px_3px_0.5px_-3.5px_rgba(255,255,255,0.5),inset_2px_2px_1px_-2px_#B3B3B3,inset_-2px_-2px_1px_-2px_#B3B3B3,inset_0_0_0_1px_#999,inset_0_0_22px_0_rgba(242,242,242,0.5)]
+    translate-y-25
+    "
         >
           <span>Projects</span>
         </div>
       </div>
 
-      {projects.map((project, index) => {
-        // Only used for subtle scale depth (NO blur)
-        const scale = useTransform(
-          scrollYProgress,
-          [index / projects.length, 1],
-          [1, 0.96],
-        );
+      <div
+        ref={containerRef}
+        className="relative w-full flex flex-col items-center gap-10 md:gap-0"
+      >
+        {projects.map((project, index) => {
+          // Mobile: No sticky, just list them. Desktop: Sticky and stack.
+          return (
+            <ProjectCard
+              key={project.id}
+              project={project}
+              index={index}
+              range={[index / projects.length, 1]}
+              targetRef={containerRef}
+              total={projects.length}
+            />
+          );
+        })}
+      </div>
+    </div>
+  );
+}
 
-        return (
-          <div
-            key={project.id}
-            className="sticky top-0 h-screen flex items-center justify-center"
-            style={{ zIndex: index + 1 }}
-          >
-            <motion.div
-              style={{ scale, willChange: "transform" }}
-              className="
-    relative w-[90%] h-[520px]
+interface ProjectCardProps {
+  project: any; // Using any for simplicity as project type isn't exported, but ideally should be typed
+  index: number;
+  range: any;
+  targetRef: any;
+  total: number;
+}
+
+const ProjectCard: React.FC<ProjectCardProps> = ({
+  project,
+  index,
+  range,
+  targetRef,
+  total,
+}) => {
+  const { scrollYProgress } = useScroll({
+    target: targetRef,
+    offset: ["start start", "end end"],
+  });
+
+  const scale = useTransform(scrollYProgress, range, [1, 0.96]);
+
+  const [isDesktop, setIsDesktop] = useState(false);
+
+  useEffect(() => {
+    const checkDesktop = () => {
+      setIsDesktop(window.innerWidth > 768);
+    };
+
+    checkDesktop();
+    window.addEventListener("resize", checkDesktop);
+    return () => window.removeEventListener("resize", checkDesktop);
+  }, []);
+
+  return (
+    <div className="relative md:sticky md:top-10 w-full min-h-auto md:min-h-screen flex items-center justify-center px-4 md:px-10 overflow-visible md:overflow-hidden py-10 md:py-0">
+      <motion.div
+        style={{
+          scale: isDesktop ? scale : 1,
+          top: isDesktop ? `calc(10vh + ${index * 20}px)` : 0,
+        }}
+        className="
+    relative w-full max-w-6xl h-auto md:h-[550px]
     rounded-[32px]
     bg-black/60
     overflow-hidden
     transform-gpu
+    border border-white/5
+    flex flex-col md:flex-row
+    mb-10 md:mb-0
   "
-            >
-              {/* GLASS SURFACE — blurs ONLY what's behind */}
-              <div
-                className="
-      pointer-events-none
-      absolute inset-0
-      rounded-[32px]
-      backdrop-blur-2xl
-      bg-white/10
-      z-10
-    "
-              />
+      >
+        {/* GLASS SURFACE */}
+        <div className="pointer-events-none absolute inset-0 backdrop-blur-2xl bg-white/5 z-0" />
 
-              {/* INNER SHINE */}
-              <div
-                className="
-      pointer-events-none
-      absolute inset-0
-      rounded-[32px]
-      shadow-[inset_0_1px_1px_rgba(255,255,255,0.25)]
-      z-20
-    "
-              />
+        {/* LEFT IMAGE (Top on mobile) */}
+        <div className="w-full md:w-1/2 h-[250px] md:h-full flex items-center justify-center z-10 p-6 bg-white/5">
+          <div className="relative w-full h-full rounded-2xl overflow-hidden flex items-center justify-center">
+            <img
+              src={project.image}
+              alt={project.title}
+              className="w-full h-full object-contain md:object-cover"
+            />
+          </div>
+        </div>
 
-              {/* ✅ CONTENT — ABOVE GLASS */}
-              <div className="relative z-30 flex h-full items-center justify-between px-14">
-                {/* LEFT IMAGE */}
-                <div className="w-1/2 h-full flex items-center justify-center">
-                  <div className="w-[420px] h-[420px] rounded-2xl bg-white/5 overflow-hidden">
-                    <img
-                      src={project.image}
-                      alt={project.title}
-                      className="w-full h-full object-contain"
-                    />
-                  </div>
-                </div>
-
-                {/* RIGHT CONTENT */}
-                <div className="w-1/2 flex flex-col justify-center text-white pl-10">
-                  <span className="text-lg text-white/60 mb-3">
-                    {project.year}
-                  </span>
-
-                  <h2 className="text-4xl font-semibold leading-tight mb-4">
-                    {project.title}
-                  </h2>
-
-                  <p className="text-white/70 text-lg max-w-md leading-relaxed">
-                    {project.description}
-                  </p>
-
-                  <button
-                    className="
-          mt-10 w-fit px-10 py-4 rounded-full
-          bg-lime-400 text-black font-semibold
+        {/* RIGHT CONTENT */}
+        <div className="w-full md:w-1/2 flex flex-col justify-center text-white p-6 md:p-8 md:pl-10 z-10 pb-10 md:pb-8">
+          <span className="text-sm md:text-lg text-white/60 mb-2">
+            {project.year}
+          </span>
+          <h2 className="text-2xl md:text-4xl font-bold leading-tight mb-4">
+            {project.title}
+          </h2>
+          <p className="text-white/70 text-sm md:text-base max-w-md leading-relaxed mb-6 md:mb-8">
+            {project.description}
+          </p>
+          <button
+            className="
+          w-fit px-6 py-2 md:px-8 md:py-3 rounded-full
+          bg-lime-400 text-black font-semibold text-sm md:text-base
           hover:scale-105 transition-transform
           shadow-[0_0_30px_rgba(163,230,53,0.6)]
         "
-                  >
-                    View Case Study
-                  </button>
-                </div>
-              </div>
-
-              {/* EDGE VIGNETTE */}
-              <div
-                className="
-      pointer-events-none
-      absolute inset-0
-      rounded-[32px]
-      shadow-[inset_0_0_90px_rgba(0,0,0,0.85)]
-      z-40
-    "
-              />
-            </motion.div>
-          </div>
-        );
-      })}
-    </section>
+          >
+            View Case Study
+          </button>
+        </div>
+      </motion.div>
+    </div>
   );
-}
+};

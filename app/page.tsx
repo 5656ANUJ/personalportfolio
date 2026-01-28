@@ -13,9 +13,9 @@ export default function Home() {
     <>
       <Navbar />
       <HeroSec />
-      <CircularText text="*UI/UX Designer* *Frontend Developer* " />
+      <section className="mt-20"><CircularText text="*UI/UX Designer* *Frontend Developer* " /></section>
       <ProjectSec />
-      <section className=" flex items-center justify-center mt-20">
+      <section className=" flex items-center justify-center mt-25">
         <div className="w-[80%] mask-[linear-gradient(to_left,transparent,black_20%,black_80%,transparent)]">
           <TextScrollMarquee
             text="  UI Designer   UX Research   Product Design   visual Design  "

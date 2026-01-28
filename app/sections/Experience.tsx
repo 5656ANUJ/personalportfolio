@@ -1,5 +1,6 @@
 "use client";
 import { ScrollTimeline } from "../reactbits/ScrollTimeline";
+import SectionWrapper from "../components/SectionWrapper";
 
 export default function Experience() {
   const events = [
@@ -20,7 +21,7 @@ I shared plenty of ideas about how the interface could work better. Since I’m 
     },
   ];
   return (
-    <section>
+    <SectionWrapper id="experience" className="py-12 md:py-20">
       <ScrollTimeline
         events={events}
         title="My Journey"
@@ -29,6 +30,6 @@ I shared plenty of ideas about how the interface could work better. Since I’m 
         cardAlignment="alternating"
         revealAnimation="fade"
       />
-    </section>
+    </SectionWrapper>
   );
 }

@@ -1,6 +1,7 @@
 "use client";
 import SlidingLogoMarquee from "../reactbits/LogoMarque";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import SectionWrapper from "../components/SectionWrapper";
 import {
   faAws,
   faCss3,
@@ -57,14 +58,22 @@ export default function Skills() {
     {
       id: "logo9",
       content: (
-        <img width="100" height="100" src="https://img.icons8.com/ios-filled/100/typescript.png" alt="typescript" className="invert w-15 h-15 -translate-y-1.2"/>
+        <img
+          width="100"
+          height="100"
+          src="https://img.icons8.com/ios-filled/100/typescript.png"
+          alt="typescript"
+          className="invert w-15 h-15 -translate-y-1.2"
+        />
       ),
     },
     { id: "logo12", content: <FontAwesomeIcon icon={faGitAlt} size="2xl" /> },
-    
   ];
   return (
-    <section>
+    <SectionWrapper id="skills" className="py-12 md:py-20">
+      <h2 className="text-2xl md:text-5xl font-bold text-center mb-6 md:mb-10 text-white px-4">
+        Skills
+      </h2>
       <SlidingLogoMarquee
         items={logos}
         speed={20}
@@ -75,6 +84,6 @@ export default function Skills() {
         showGridBackground={true}
         onItemClick={(item) => console.log("Clicked:", item.id)}
       />
-    </section>
+    </SectionWrapper>
   );
 }

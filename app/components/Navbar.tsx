@@ -18,7 +18,10 @@ function Navbar() {
     { name: "Experience", link: "#experience" },
   ];
 
-  const handleScroll = (e, href) => {
+  const handleScroll = (
+    e: React.MouseEvent<HTMLAnchorElement>,
+    href: string,
+  ) => {
     e.preventDefault();
     if (href === "resume") {
       window.open(resumeLink, "_blank");
@@ -32,7 +35,11 @@ function Navbar() {
     }
   };
 
-  const TextScrollLink = ({ name, href }) => {
+  interface TextScrollLinkProps {
+    name: string;
+    href: string;
+  }
+  const TextScrollLink = ({ name, href }: TextScrollLinkProps) => {
     return (
       <a
         href={href}

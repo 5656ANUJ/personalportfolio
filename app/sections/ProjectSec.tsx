@@ -1,32 +1,46 @@
 "use client";
 import { useRef, useState, useEffect } from "react";
+import Folder from "../reactbits/folder";
 import { motion, useScroll, useTransform } from "framer-motion";
-import SectionWrapper from "../components/SectionWrapper";
+import project1Img from "../assets/project1.png";
+import project2Img from "../assets/image.png";
+import project3Img from "../assets/robot.png";
+import project4Img from "../assets/E1.png";
+import project5Img from "../assets/E2.png";
+import project6Img from "../assets/E3.jpg";
+import project7Img from "../assets/E4.jpg";
+import project8Img from "../assets/E5.jpg";
+import project9Img from "../assets/E6.jpg";
+import project10Img from "../assets/E7.png";
+
+
 
 const projects = [
   {
     id: 1,
-    year: "2025",
-    title: "Telecom mobile application",
+    year: "2026",
+    title: "Infinova Technologies",
     description:
-      "Onboarding, face scan, product recommendations, and streak-based logging—designing end-to-end engagement for skincare users.",
-    image: "/mockups/telecom-app.png",
+      "Infinova is a B2B SaaS platform that helps businesses manage their customer data and interactions. I worked on the onboarding, face scan, product recommendations, and streak-based logging—designing end-to-end engagement for skincare users.",
+    images: [project1Img.src, project2Img.src, project3Img.src],
   },
   {
     id: 2,
-    year: "2024",
-    title: "Fintech Dashboard System",
+    year: "2025",
+    title:
+      "Infinova Eduventures – UI/UX Design for Student Development Platform",
     description:
-      "Comprehensive financial visualization with real-time analytics, transaction monitoring, and automated reporting systems.",
-    image: "/mockups/fintech.png",
+      "Designed and developed a user-centric, fully responsive UI/UX for Infinova Eduventures, a platform focused on student development and skill training.  ",
+    images: [project4Img.src, project5Img.src, project10Img.src],
   },
   {
     id: 3,
-    year: "2023",
-    title: "E-commerce Experience",
+    year: "2025",
+    title: "Infinova Global Website",
     description:
-      "Modern shopping platform focused on seamless user journeys, personalized recommendations, and high-conversion checkout flows.",
+      "Collaborate with the developer to redesign the Infinova Global website. I worked on the landing page,and few other sections.",
     image: "/mockups/ecommerce.png",
+    images: ["/mockups/ecommerce.png"],
   },
 ];
 
@@ -112,14 +126,14 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
   }, []);
 
   return (
-    <div className="relative md:sticky md:top-10 w-full min-h-auto md:min-h-screen flex items-center justify-center px-4 md:px-10 overflow-visible md:overflow-hidden py-10 md:py-0">
+    <div className="relative md:sticky md:top-0 w-full min-h-auto md:h-screen flex items-center justify-center px-4 md:px-10 overflow-visible py-10 md:py-0">
       <motion.div
         style={{
           scale: isDesktop ? scale : 1,
-          top: isDesktop ? `calc(10vh + ${index * 20}px)` : 0,
+          top: isDesktop ? `calc(${index * 20}px)` : 0,
         }}
         className="
-    relative w-full max-w-6xl h-auto md:h-[550px]
+    relative w-full max-w-7xl h-auto md:h-[650px] md:max-h-[85vh]
     rounded-[32px]
     bg-black/60
     overflow-hidden
@@ -132,15 +146,23 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
         {/* GLASS SURFACE */}
         <div className="pointer-events-none absolute inset-0 backdrop-blur-2xl bg-white/5 z-0" />
 
-        {/* LEFT IMAGE (Top on mobile) */}
-        <div className="w-full md:w-1/2 h-[250px] md:h-full flex items-center justify-center z-10 p-6 bg-white/5">
-          <div className="relative w-full h-full rounded-2xl overflow-hidden flex items-center justify-center">
-            <img
-              src={project.image}
-              alt={project.title}
-              className="w-full h-full object-contain md:object-cover"
-            />
-          </div>
+        {/* LEFT IMAGE COLLAGE (Top on mobile) */}
+        <div className="w-full md:w-1/2 h-[350px] md:h-full flex items-center justify-center z-10 p-4 md:p-8 bg-white/5 overflow-hidden">
+          <Folder
+            items={
+              project.images?.map((url: string, idx: number) => (
+                <img
+                  key={idx}
+                  src={url}
+                  alt={`${project.title} ${idx}`}
+                  className="w-full h-full object-cover"
+                />
+              )) ?? []
+            }
+            color="#A3E635"
+            size={3}
+            className="w-full h-full flex items-center justify-center overflow-hidden translate-y-25"
+          />
         </div>
 
         {/* RIGHT CONTENT */}

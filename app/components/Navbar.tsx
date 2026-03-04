@@ -18,10 +18,7 @@ function Navbar() {
     { name: "Experience", link: "#experience" },
   ];
 
-  const handleScroll = (
-    e: React.MouseEvent<HTMLAnchorElement>,
-    href: string,
-  ) => {
+  const handleScroll = (e: React.MouseEvent<HTMLElement>, href: string) => {
     e.preventDefault();
     if (href === "resume") {
       window.open(resumeLink, "_blank");

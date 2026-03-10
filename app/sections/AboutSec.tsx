@@ -1,5 +1,6 @@
 "use client";
 import SectionWrapper from "../components/SectionWrapper";
+import aboutimge from "../assets/aboutimg.jpg";
 
 export default function AboutSec() {
   const resumeLink =
@@ -13,7 +14,8 @@ export default function AboutSec() {
       <div className="w-full md:w-1/2 h-[250px] md:h-[600px] rounded-xl md:rounded-2xl overflow-hidden shadow-2xl">
         <img
           className="w-full h-full object-cover"
-          src="https://framerusercontent.com/images/lpzHMGI6fqkXruZWBeST07brk.jpg?width=1200&height=1600"
+          src="https://drive.google.com/file/d/1CMtT8N2ulKj2gTa7HMt_PN5gtDm7pA-L/view?usp=drive_link
+          "
           alt="About Anuj"
         />
       </div>

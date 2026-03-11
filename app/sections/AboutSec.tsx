@@ -1,6 +1,6 @@
 "use client";
 import SectionWrapper from "../components/SectionWrapper";
-import aboutimge from "../assets/aboutimg.jpg";
+import img1 from "../assets/aboutimg.png"
 
 export default function AboutSec() {
   const resumeLink =
@@ -14,7 +14,7 @@ export default function AboutSec() {
       <div className="w-full md:w-1/2 h-[250px] md:h-[600px] rounded-xl md:rounded-2xl overflow-hidden shadow-2xl">
         <img
           className="w-full h-full object-cover object-top"
-          src="https://github.com/5656ANUJ/personalportfolio/blob/main/app/assets/aboutimg.png?raw=true"
+          src={img1.src}
           alt="About Anuj"
         />
       </div>

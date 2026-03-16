@@ -5,8 +5,8 @@ import SectionWrapper from "../components/SectionWrapper";
 export default function Experience() {
   const events = [
     {
-      year: "Aug-2025 - Present",
-      title: "UI/UX Intern",
+      year: "Aug-2025 - Feb 2026",
+      title: "UI/UX and Web Developer Intern",
       subtitle: "Infinova Technologies",
       description:
         "In this job, I'll handle all things UI/UX plus Figma work - building flexible designs focused on real users to make interactions smoother. Doing this helps sharpen how I approach problems visually, giving me a boost while moving toward full-stack dev, because good design works right alongside coding.",

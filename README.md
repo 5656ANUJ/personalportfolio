@@ -1,36 +1,67 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+<h1 align="center">🌐 Anuj's Developer Portfolio</h1>
 
-## Getting Started
+<h3 align="center">
+🚀 AI & Full Stack Developer | Building Real-World Tech Products
+</h3>
 
-First, run the development server:
+<p align="center">
+  <img src="https://readme-typing-svg.herokuapp.com?size=24&duration=3000&color=36BCF7&center=true&vCenter=true&width=850&lines=Welcome+to+My+Portfolio+Website;AI+%26+Full+Stack+Developer;Building+Scalable+Projects;Exploring+LLMs+%26+AI+Systems;Learning+Through+Real-World+Projects" />
+</p>
+
+---
+
+# 🚀 About The Project
+
+This is my personal developer portfolio website built to showcase my:
+- 💻 Projects
+- 🚀 Skills
+- 🧠 Tech Stack
+- 📈 Learning Journey
+- 🤝 Community & Development Work
+
+The portfolio reflects my interest in:
+- AI Applications
+- Full Stack Development
+- Developer Tools
+- Modern Web Technologies
+- Community Building
+
+---
+
+# 🛠️ Tech Stack
+
+<p align="left">
+<img src="https://skillicons.dev/icons?i=nextjs,react,tailwind,ts,js,nodejs,firebase,mongodb,git,github,vscode,figma" />
+</p>
+
+---
+
+# ✨ Features
+
+- ⚡ Modern Responsive UI
+- 🌙 Smooth User Experience
+- 📱 Mobile Friendly Design
+- 🧩 Component-Based Architecture
+- 🚀 Optimized Performance
+- 🎨 Clean & Minimal Interface
+- 🔗 Social Media Integration
+- 📂 Project Showcase Section
+
+---
+
+# 📂 Featured Sections
+
+- 👨‍💻 About Me
+- 🛠️ Skills & Technologies
+- 🚀 Projects
+- 📈 Experience & Learning
+- 📬 Contact Section
+
+---
+
+# ⚙️ Getting Started
+
+Clone the repository:
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
-
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+git clone https://github.com/5656ANUJ/your-portfolio-repo.git
